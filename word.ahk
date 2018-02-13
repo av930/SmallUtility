@@ -22,13 +22,15 @@ WordList := ""
 FileEncoding, UTF-8
 loop, read, words.txt
     WordList .= A_LoopReadLine "|"
-
-
-Gui, Add, Button, w350 h20 +Default gSelected,
+    
 Gui, Add, ListBox, vWordChoice gMouseControl W350 H200, %WordList%
-
 Gui, Show, ,%ProgramName%
 return
+
+
+MouseControl: ;;mouse control
+If A_GuiEvent = Normal
+ return
 
 
 Selected:
@@ -36,13 +38,10 @@ Selected:
 	Gui, Destroy
 	Clipboard := % WordChoice  ; Copies TextItem1/TextItem2/etc. to the clipboard
 	;TrayTip, Item Copied, %Choice% has been copied to the clipboard.
-    sleep 500
+    sleep 100
     send, ^v
 return
 
-MouseControl: ;;mouse control
-If A_GuiEvent = Normal
- return
 
 ;;StandAlone Mode
 #If WinActive(ProgramName)
@@ -53,7 +52,7 @@ If A_GuiEvent = Normal
 ;Down::ControlSend, ListBox1, {Right}, %GUITitle%
 ;return
 
-
+ENTER:: goto Selected
 
 ESC::
 GuiClose:
