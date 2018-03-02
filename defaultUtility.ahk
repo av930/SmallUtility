@@ -26,7 +26,7 @@ return
 
 ;;^Esc::ExitApp  ; Ctrl+Escape closes this script
 
-
+/*
 #a::
 loginSSO(temp)    
 return
@@ -86,3 +86,4 @@ loginSSO(url){
 
 
 
+*/
