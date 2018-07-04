@@ -23,8 +23,18 @@ FileEncoding, UTF-8
 loop, read, words.txt
     WordList .= A_LoopReadLine "|"
     
+
+Gui, Font, s12,  
 Gui, Add, ListBox, vWordChoice gMouseControl W350 H200, %WordList%
-Gui, Show, ,%ProgramName%
+
+;;Move GUI to Current Monitor
+WinGetActiveStats, Title, Width, Height, X, Y
+WPosX := X + Width / 3
+WPosY := Y + Height / 3
+
+;; when windows, force to locate (600, 400)
+Gui, Show, x%WPosX% y%WPosY%, %ProgramName%
+
 return
 
 
